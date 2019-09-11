@@ -1,8 +1,7 @@
 import React,{Component, Fragment} from 'react';
 import axios from 'axios';
 import List from '../components/List';
-import { AppBar, Typography, Toolbar } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import AppNav from '../components/AppNav';
 
 class PokeListContainer extends Component{
 
@@ -23,26 +22,15 @@ class PokeListContainer extends Component{
 
     render(){
 
-        const { classes } = this.props;
         const { pokeData } = this.state;
 
         return(
             <Fragment>
-                <AppBar position="static" className={classes.NavColor}>
-                    <Toolbar variant="dense">
-                        <Typography variant="h6">
-                            PokeApp
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
+                <AppNav />
                 <List pokedata={pokeData} />
             </Fragment>
         );
     }
 }
 
-export default withStyles({
-    NavColor:{
-        backgroundColor: '#333333'
-    }
-})(PokeListContainer);
+export default PokeListContainer;
