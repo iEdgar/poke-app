@@ -1,8 +1,19 @@
 import React from 'react';
 
-const List = () => {
+function List({pokedata}) {
     return(
-        <h1>Lista de pókemons</h1>
+        <div>
+            <h1>Lista de pókemons</h1>
+            <ul>
+                {pokedata.map((pokemon,index) => {
+                    return (
+                        <li key={index}>
+                            {pokemon.name}
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
     );
 }
 
