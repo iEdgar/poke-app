@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PokeCard from './PokeCard';
+import { Grid } from '@material-ui/core';
 
 function List({pokedata}) {
     return(
-        <div>
-            <h1>Lista de pókemons</h1>
-            <ul>
-                {pokedata.map((pokemon,index) => {
-                    return (
-                        <li key={index}>
-                            {pokemon.name}
-                        </li>
-                    );
+        <Fragment>
+            <Grid container justify="center">
+                {pokedata.map((pokemon) => {
+                    let url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other-sprites/official-artwork/"
+                    let pokeIndex = pokemon.url.split('/')[pokemon.url.split('/').length - 2]
+                    return <PokeCard key={pokeIndex} name={pokemon.name} image={`${url}${pokeIndex}.png`}/>
                 })}
-            </ul>
-        </div>
+            </Grid>
+        </Fragment>
     );
 }
 
